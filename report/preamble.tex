@@ -1,0 +1,160 @@
+% Her bestemmes dokument klassen, "article" er standard, og den langt de fleste bruger.
+\documentclass[11pt,a4paper,titlepage]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage[margin=2cm,headheight=13.6cm]{geometry}
+\usepackage[final]{pdfpages}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{biblatex}
+\usepackage{caption}
+\usepackage{color}
+\usepackage{csquotes}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage[hidelinks]{hyperref}
+\usepackage{listings}
+\usepackage{mdwlist}
+\usepackage{multicol}
+\usepackage{pgfkeys}
+\usepackage{subfig}
+\usepackage{textcomp}
+\usepackage{titling}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usepackage{pgfplotstable}
+\usepackage{pgfplots}
+
+\renewcommand\columnseprulecolor{\hspace{17pt}}
+
+
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{9} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{9}  % for normal
+
+% Colors:
+\definecolor{mygreen}{RGB}{0,127,0}
+\definecolor{mygray}{RGB}{100,100,100}
+\definecolor{mymauve}{RGB}{100,32,255}
+\definecolor{lgray}{RGB}{230,230,230}
+
+% Even better colours:
+\definecolor{KU-red}{RGB}{144, 26, 30}
+\definecolor{lightblue}{rgb}{0.6,0.6,1.0}
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+\definecolor{yellow}{rgb}{0.6,0.6,0}
+\definecolor{mattegreen}{rgb}{0.45,0.85,0.45}
+\definecolor{gray}{rgb}{0.95,0.95,0.95}
+\definecolor{mediumgray}{rgb}{0.60,0.65,0.63}
+\definecolor{darkgray}{rgb}{0.45,0.45,0.45}
+\definecolor{mattered}{rgb}{1.0, 0.13, 0.32}
+
+% Text Coloring:
+\newcommand{\dgreen} [1]{{\color{deepgreen}{#1}}}
+\newcommand{\green}  [1]{{\color{green}{#1}}}
+\newcommand{\yello}  [1]{{\color{yellow}{#1}}}
+\newcommand{\blue}   [1]{{\color{blue} {#1}}}
+\newcommand{\red}    [1]{{\color{red}  {#1}}}
+\newcommand{\grey}   [1]{{\color{gray} {#1}}}
+\newcommand{\dgrey}  [1]{{\color{darkgray} {#1}}}
+
+\newcommand\link[2]{\href{#2}{\blue{#1}}}
+
+
+\lstset{ %
+  frame=none,
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+  basicstyle=\footnotesize\ttm,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=t,                    % sets the caption-position to bottom
+  commentstyle=\ttm\color{mediumgray},
+  deletekeywords={...},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\ttm\color{deepblue},
+  language=haskell,                % the language of the code
+  numbers=none,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\ttb\color{darkgray},
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{mymauve},     % string literal style
+  tabsize=4,                       % sets default tabsize to 2 spaces
+  aboveskip=3mm,
+  belowskip=3mm,
+}
+
+\lstset{%
+  morekeywords={%
+    map2,
+    reduce,
+    scan,
+    unsafe,
+    length,
+}}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{Frederik K. Mastratisi \& Oscar Nelin \& Simon Rotendahl}
+\usepackage{datetime}
+\usepackage{moresize}
+
+\newdateformat{monthyeardate}{%
+  \monthname[\THEMONTH] \THEYEAR}
+
+\newcommand{\rulebreak}{%
+	\par%
+	\vspace{0.9cm}%
+    \noindent\rule{4cm}{0.4pt}%
+    \vspace{1.2cm}%
+    \par%
+}
+
+\newcommand{\coverpage}[1]{%
+	\pagenumbering{roman}%
+	\thispagestyle{empty}%
+	\lhead{\textsc{PFP Group Project}}%
+    \title{PFP}%
+    \author{Frederik Kallestrup Mastratisi \and Oscar Nelin \and Simon Rotendahl}%
+    \newgeometry{left=2cm,bottom=0cm,right=2cm,top=0cm}%
+	\begin{center}\hspace{0pt}\vfill%
+    \uppercase{Datalogisk Institut Københavns Universitet}
+	\rulebreak%
+    {\Large\textbf{PFP Group Project}}
+
+    \vspace{0.5cm}
+    {\HUGE\textbf{\textit{#1}}}
+
+    \vspace{0.5cm}
+	\theauthor%
+	\par%
+	\vspace{0.9cm}%
+    \noindent\rule{4cm}{0.4pt}%
+    \vspace{0.45cm}
+    % If TOC gets to long, uncomment multicols for columns
+    %\begin{multicols}{2}
+	\tableofcontents
+	%\end{multicols}
+	\rulebreak%
+    \monthyeardate\today\par
+    \hspace{0pt}
+	\end{center}%
+    \vfill
+    \hspace{0pt}
+	\pagebreak%
+    \restoregeometry%
+    \pagenumbering{arabic}%
+}
+
+\addbibresource{references.bib}
