@@ -1,8 +1,5 @@
 \input{preamble}
 
-\pgfplotstableread[col sep=comma]{../benchmarks.csv}\benchone%
-\pgfplotstableread[col sep=comma]{../error.csv}\errorrate%
-
 \newenvironment{Figure}
   {\par\medskip\noindent\minipage{\linewidth}}
   {\endminipage\par\medskip}
@@ -13,12 +10,14 @@
     \input{abstract}
 \end{abstract}
 
-\begin{multicols}{2}
 \section{Introduction}\label{intro}
 \input{introduction}
 
 \section{Background}\label{back}
 \input{background}
+
+\section{Arbitrage}\label{arb}
+\input{arbitrage}
 
 \section{Implementation}\label{imp}
 \input{implementation}
@@ -28,8 +27,6 @@
 
 \section{Conclusion}\label{con}
 \input{conclusion}
-
-\end{multicols}
 
 \newpage
 \printbibliography

@@ -1,5 +1,3 @@
-\section{Background}
-
 \subsection{Flash Loans}
 Flash loans are zero-risk loans which enables anyone to borrow large amounts of money, which they can do what they please with, as long as they pay the loan back within the same transaction. This will sound crazy to the uninitiated but lets explain. Usually there is a risk in lending money, that is the risk of the borrower not paying it back, however this can be gaurenteed by the blockchain. When a transaction is being computed it can be rolled back if something invalidates the transaction, so if we say that not repaying the loan is in violation of the contract, then the block will role back to before the transaction.
 
@@ -10,4 +8,7 @@ When taking a flash loan you borrow from a liquidity pool, and when borrowing fr
 A dencentralized exchange is (like normal exchanges) a service where actors can exchange their assets in a dencentralized fashion.
 
 \paragraph{Limit order book (LOB)}
+A limit order book is a record of so called \textit{limit orders}. A limit order is a trader requesting to buy or sell up to a certian price, so if we want to sell an assets a limit order could be that we want to sell asset X at 15\$ or higher, or if we were buying we would say that we want to buy asset X at 15\$ or below. A LOB is simply a record of such limit orders.
+
 \paragraph{Automated market maker (AMM)}
+Works by exchanging assets between pools, so if you fx. have a pair of pools A/B then you will have the relationship A*p=c where c is some constant set at the start. So if pool A is 100 a’s and c is 20.000 then you have that 1 a costs 100 b’s, if 1 a is now traded from the pool, A becomes 99 and the new price is approx 202.
