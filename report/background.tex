@@ -3,11 +3,10 @@ Flash loans are zero-risk loans which enables anyone to borrow large amounts of 
 
 When taking a flash loan you borrow from a liquidity pool, and when borrowing from this pool you pay back a fee thereby incentivizing individuals and investors to deposit in the pool.
 
-\subsection{Terminology alert}
-\subsubsection{Dencentralized exchange (DEX)}
+\subsection{Dencentralized exchange (DEX)}
 A dencentralized exchange is (like normal exchanges) a service where actors can exchange their assets in a dencentralized fashion.
 
-\paragraph{Limit order book (LOB)}
+\subsubsection{Limit order book (LOB)}
 A limit order book is a record of so called \textit{limit orders}. A limit order is a trader requesting to buy or sell up to a certian price, so if we want to sell an (or multiple) assets a limit order could be that we want to sell asset X at 15\$ or higher, or if we were buying we would say that we want to buy asset X at 15\$ or below. A LOB is simply a record of such limit orders. An example of this can be seen in figure
 \begin{figure}[h]
   \centering
@@ -16,12 +15,10 @@ A limit order book is a record of so called \textit{limit orders}. A limit order
   \label{fig:LOB}
 \end{figure}
 
-\paragraph{Automated market maker (AMM)}
+\subsubsection{Automated market maker (AMM)}
 We have specifically looked at Uniswap when understanding AMM's, so while this definition will fit most AMM's since we look at the concept, the math/implementation of the concept might differ from AMM to AMM.
 
 AMM's works by exchanging assets between pools in a contract, for example one contract could exchange DAI for BTC then this contract wil contain a pool of DAI and a pool of BTC. This method is how Uniswap version 2 works, here we have a great number of contracts since we have a contract for each exchange pair, so one for DAI/BTC, one for DAI/LTC etc. Version 1 of Uniswap worked by having ETH as the "background" currency meaning that for each asset (X) there was a contract containing ETH and X, you could then exchange ETH to X and X to ETH but if you wanted to swap Y for X you would need to swap Y for ETH, and ETH for X. This is not good since you trade twice, and encur the fees associated with that twice, as well as experiencing the \textit{slippage} in both trades, and this is one of the things that the second version of the Uniswap protocol fixes.
 
-\paragraph{Slippage} We have an overview of how AMM's work, but unlike LOB's it is not clear how we determine the exchange rate between asset X and asset Y.
-
-
-, so if you fx. have a pair of pools A/B then you will have the relationship A*p=c where c is some constant set at the start. So if pool A is 100 a’s and c is 20.000 then you have that 1 a costs 100 b’s, if 1 a is now traded from the pool, A becomes 99 and the new price is approx 202.
+\paragraph{Slippage} We have an overview of how AMM's work, but unlike LOB's it is not clear how we determine the exchange rate between asset X and asset Y. The basic formular is $p_t=\frac{r^A_t}{r^B_t}$ \cite[eq 1, page 2]{uniswap}, which means that the price of asset $A$ in terms of asset $B$ at time $t$ ($p_t$) is the amount of $A$'s in the contract at time $t$ (reserve $r^A_t$) divided by the amount of $B$'s in the contract at time $t$ (reserve $r^B_t$). That is the price is a ration of the two assets in the contract. To understand how the price is kept in check lets take an example. We deploy a contract for DAI/ETH and we put in $10,000$ DAI and $1,000$ ETH, if I want to exchange a DAI for ETH I will get $\frac{1,000}{10,000}=0.1$ ETH, depending on when you read this, this might be a good or bad deal, at the 23rd of august 2020, this is a good deal since DAI is considered to be worth $\approx 0.0026$ ETH so we take the deal, now the contract has $10,001$ DAI and $999.9$ ETH and this means that the next DAI will only be worth $\frac{999.9}{10,001}=0.099980002$ ETH, so the price is \textit{slipping} with respect to the quantity you are buying. In this sense there is nothing inherit in the smart contract that ensures that the exchange rate is the same as other exchanges, this is mitigated by the market itself and the rate will converge with the consensus through arbitrage. % We also notice that there is an initial relationship between the two pools and we call this the \textit{constant product} (or just consxstant or $c$) where $A*B=c$ or in our example $10.000*1.000=10.000.000$, we can use this to 
+%, so if you fx. have a pair of pools A/B then you will have the relationship A*p=c where c is some constant set at the start. So if pool A is 100 a’s and c is 20.000 then you have that 1 a costs 100 b’s, if 1 a is now traded from the pool, A becomes 99 and the new price is approx 202.
