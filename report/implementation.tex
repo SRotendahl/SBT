@@ -1,1 +1,110 @@
-Super cool implementation
+\subsection{Libraries}
+\subsubsection{money-legos}
+We chose to utilize the money-legos library. The advantage of using a
+third party helper library is, that we have access to helpers for all of the
+different protocols. This made it easy to swap between doing flash loans at
+different providers, and we were easily able to swap on different exchanges.
+Furthermore the people behind money-legos have made some great
+documentation for many of the protocols.
+
+The money-legos library works by having a few helper methods, but mostly
+by providing abstract\footnote{Pre Solidity 0.6.0 an abstract contract was
+simply a contract without an implementation, but we chose to port it to solidity
+0.6.0 to be able to use some new features} contracts that can then be
+instantiated with the address of the deployed contract.
+
+\subsubsection{open-zeppelin}
+
+From open-zeppelin we have mostly taken inspiration from the code, but we
+also directly use the ownable contract, as we don't want other people to be able
+to use our contract.
+
+\subsection{Flash loans on $\delta y/\delta x$ in practice}
+In practice flash loans are implemented by chaining three method calls on the
+$\delta y/\delta x$ protocol, where in other protocols flash loans are built
+into the protocol.
+\begin{enumerate}
+    \item Borrow
+    \item Call (execute money making logic)
+    \item Deposit
+\end{enumerate}
+A small fee is paid at the deposit step (+2 wei of the borrowed asset).
+
+\subsection{The smart contract}
+Our contract named ``Gordon'' uses the $\delta y/\delta x$ protocol to take a
+flash loan, and then based on the user input, execute (triangular) arbitrage on
+the Uniswap market. We chose to make our contract, so that you deploy it once,
+and based on user input, when a flash loan is initiated it will exchange the
+different assets. This means that the contract can be reused and does not need
+to be redeployed, for each arbitrage opportunity. This design decision is
+critical due to two main reasons.
+\begin{itemize}
+    \item It is expensive to deploy a smart contract. Using the built in gas
+        estimator in Remix IDE we estimated, that deploying the contract uses
+        about 936,800 gas, which at an average price of 117 Gwei equals around
+        \$44 at the time of writing.
+    \item If we have to wait for the contract to be deployed we might miss the
+        arbitrage opportunity, as this would require us to wait for at least one
+        block, while the contract is deployed, and then afterwards call the
+        appropriate method on our contract.
+\end{itemize}
+
+\begin{figure}[h]
+    \begin{lstlisting}[language=Solidity]
+    contract Gordon is ICallee, DydxFlashloanBase, Ownable { ...\end{lstlisting}
+    \caption{The declaration of our contract}
+    \label{fig-gordon}
+\end{figure}
+
+\noindent After the flash loan is granted, a method on the contract is called (see the
+signature in figure \ref{signature}). The most interesting thing that is passed
+to the method is passed in the data variable. This block of data is used to
+control what the loan is used for. By creating a simple byte code interpreter,
+we can control what steps to take. We have created a simple instruction set with
+the definition show here, where data is the final argument to the
+method\footnote{See figure \ref{signature} for a signature of the method}:
+
+\begin{samepage}
+\begin{verbatim}
+<Uniswap>  ::= 0x00
+<Kyber>    ::= 0x01
+<exchange> ::= <Uniswap> | <Kyber>
+
+<WETH>   ::= 0x00
+<USDC>   ::= 0x01
+<DAI>    ::= 0x02
+<assets> ::= <WETH> | <USDC> | <DAI>
+
+<instr_header> ::= <exchange>
+<instr_data>   ::= <asset> <asset> // Asset to convert from and to
+
+<instruction> ::= <instr_header> <instr_data>
+
+<data> ::= <instruction> <data> | ""
+\end{verbatim}
+\end{samepage}
+
+To initiate a flash loan the method \verb|initiateFlashLoan| is
+called\footnote{See figure \ref{signature} for a signature of the method}.
+This method takes care of setting up the sequence of events to complete the
+flash loan. The method calls our \verb|callFunction| method and passes the
+instructions.
+
+\begin{figure}[h]
+\begin{lstlisting}[language=Solidity]
+function initiateFlashLoan(
+    address _solo,
+    address _token,
+    uint256 _amount,
+    bytes calldata data) { ...
+
+function callFunction(
+    address sender,
+    Account.Info memory account,
+    bytes memory data
+) public override { ...
+\end{lstlisting}
+    \caption{The signature of the function that is called after the loan is
+    granted}
+    \label{signature}
+\end{figure}
