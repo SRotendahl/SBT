@@ -1,14 +1,14 @@
-In practise arbitrage is the process of buying something at price $x$
+In practice, arbitrage is the process of buying something at price $x$
 and instantly selling it a price $y$ where $x<y$. Arbitrage is
 risk-free, if we make some assumptions; since we perform it instantly
-we can gaurentee that $x<y$, and we do not take into account the
-inherit volunerabilities of bugs in smart contracts.
+we can guarantee that $x<y$, and we do not take into account the
+inherit vulnerabilities of bugs in smart contracts.
 
 \subsection{LOB arbitrage}
 
 When determining the arbitrage opportunity it is a bit more
 complicated since prices of assets are not static but determined by
-market behaviours. As we defined in the background section there are
+market behaviors. As we defined in the background section there are
 two main forms of exchanges, the simpler one being the limit order
 book. When performing arbitrage on LOB DEX's we check if there is some
 asset (ABC) that has an overlapping price, an example of this can be
@@ -23,8 +23,8 @@ the overlapping limit orders.
 \end{figure}
 This is a simple form of arbitrage, we can find more opportunities if
 we look at \textit{triangular arbitrage}. Triangular arbitrage is
-where the arbitrage opportunity arise from the trade of 3 assets, that
-is we trade asset X for asset Y, trade asset Y for asset Z, and
+where the arbitrage opportunity arises from the trade of 3 assets, that
+is, we trade asset X for asset Y, trade asset Y for asset Z, and
 finally trade asset Z back to asset X. We end up with the rule that if
 $rate(X/Y)*rate(X/Z)>rate(Y/X)$ then there is a profitable arbitrage
 (where $rate(A/B)$ is the conversion rate from $B$ to $A$). We have
@@ -46,25 +46,25 @@ expensive one. However, since the price at both exchanges will change
 as a function of the amount of money we use, we can't just take a
 flash loan as big as possible, and arbitrage
 with the entire amount. At some point, the price has changed so much, that we're
-no longer making money, but actually losing it. So we need to find the amount of
+no longer making money, but losing it. So we need to find the amount of
 money, such that when all is said and done, the 2 exchanges will have the same
 price. Why exactly the same price? Because if the first exchange is still
 lower, there still exists an arbitrage opportunity, and we didn't fully exploit
 the one we found. If the second exchange is at a
 lower price than the first after the transaction is done, we will have
-bought some of the second asset, at a
+bought some of the second assets, at a
 higher price, than we sold it for. While the entire transaction might
 still be profitable, we didn't
 maximize our profits, which we strive to do. So in order to maximize our
 profits, we need to find out how much to exchange, such that the prices at the 2
-exchanges are the same afterwards. In the next section, we will show how to find
+exchanges are the same afterward. In the next section, we will show how to find
 this amount.
 
 \subsection{Maximizing AMM arbitrage opportunities}\label{maximizing}
 As explained in the previous section, the prices at the 2
-exchanges, involved in a arbitrage exploit, need to be the same after the
+exchanges, involved in an arbitrage exploit, need to be the same after the
 transaction, and that we need to find the input amount (amount to be
-exchanged) required in order to
+exchanged) required to
 maximize our profits. In this section, we will find this amount. First, we will
 state the equation that describes the desired outcome:
 
