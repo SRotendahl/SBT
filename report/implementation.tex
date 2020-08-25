@@ -43,13 +43,13 @@ decision is critical due to two main reasons.
     \item It is expensive to deploy a smart contract. Using the built in gas
         estimator in Remix IDE we estimated, that deploying the contract uses
         about 936,800 gas, which at low price of 77 Gwei equals around
-        \$28 at the time of writing. We can excatly choose this low price, as
-        our contract is deploy once, whereas otherwise, we would need to pay
-        more per gas in order to reliably get our contract deployed quickly.
+        \$28 at the time of writing. We can choose this low price, as our
+        contract is deploy once, whereas otherwise, we would need to pay more
+        per gas in order to reliably get our contract deployed quickly.
     \item If we have to wait for the contract to be deployed we might miss the
-        arbitrage opportunity, as this would require us to wait for at least one
-        block, while the contract is deployed, and then afterwards call the
-        appropriate method on our contract.
+        arbitrage opportunity. This is because it would require us to wait for
+        at least one block, for the contract to be deployed, and then only
+        afterwards call the appropriate method on our contract.
 \end{itemize}
 
 \noindent After the flash loan is granted, a method on the contract is called
