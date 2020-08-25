@@ -1,3 +1,4 @@
+%! TEX root = main.tex
 Flash loans does not enable anything new it simply allows everyone to
 be able to trade with large amounts of capital (in one transaction),
 if you did indeed posses a vast amount of wealth (if you are a whale)
@@ -15,14 +16,14 @@ flash loans \cite{attack}.
   \caption{A simplified figure showing the first arbitrage using flash loans.}
   \label{fig:firstArb}
 \end{wrapfigure}
-\paragraph{Arbitrage} An asset' value is determined through supply and
+\paragraph{Arbitrage} An assets' value is determined through supply and
 demand, so if there is a larger supply of the asset than there is
 demand the price will go down and if the supply goes down (while the
 demand stays the same) the price goes up. This is reflected in the
-different DEX's, however they do enot instantly synchronize, so if one
+different DEXes, however they do not instantly synchronize, so if one
 DEX trades an asset for a lower price than another, then there is an
 \textit{arbitrage} opportunity. Arbitrage is the process of making
-profit off of these prices difference. The prices differences will
+profit off of these price differences. The price differences will
 usually be small so in order to make a significant amount of money you
 will need a great deal of capital and this is where flash loans comes
 in. Flash loans guarentees that the loans is paid back at the end of
@@ -40,14 +41,14 @@ have illustrated a walkthrough of the arbitrage in figure
 lies in the exchange rate of Uniswap not matching the migration on
 MakerDAO.
 
-\paragraph{Wash Trading} When tradeing it is important to have an eye
+\paragraph{Wash Trading} When trading it is important to keep an eye
 on the trends of the market, what asset is frequently traded, how much
 of it, and why. Wash trading is the process of creating an artificial
 trend by buying and selling an asset thereby increasing the volume at
 which the asset is traded which will attract investors. This practice
 has been banned (in the USA) on the centralized markets since
 1936. While we do not condone this practice it is undeniable a
-use-case for flash loans since with no significant captial can greatly
+use-case for flash loans, since you can with no significant captial greatly
 increase the trade volume of an asset, and thereby manipulate the
 market.
 
@@ -58,11 +59,19 @@ ETH and the value of ETH declines, then you might want to swap it for
 DAI but you might have taken out loans aganist this collateral, so you
 do not have the capital to pay out your collateralized position and
 take out a new one in a different asset. With flash loans this becomes
-easy, you would loan the amount you need to pay out you position, swap
+easy, you would loan the amount you need to pay out your position, swap
 that capital to the asset you want as the new collateral, take out a
 new collateralized position, and finally pay back the loan.
 
-\paragraph{Liquidation action} Maybe, DeFi saver.
+\paragraph{Liquidation auction} When a CDP (Collateralized Debt Position) is
+opened at e.g. Maker, they require you to put up ETH as collateral for the loan
+you take in DAI. If ETH falls in value enough, you will end up below a certain
+threshold (150\%). If this occurs, your collateral will be auctioned off, to
+cover your debt with an added penalty fee. In order to earn money from this
+using flash loans, one can take a flash loan and buy collateral at an auction.
+Because the collateral should still be worth more than 100\% of the debt, you
+should end up with a profit, that then can be used to pay back the flash loan.
+There is relatively little risk, as you at most end up losing the gas fees.
 
 \subsection{Discussion}
 As we can see in these few use cases it can be hard to say if flash
@@ -78,4 +87,4 @@ wash trading (and oracle manipulation as we will see in section
 market to gain a profitable opportunity without adding anything to the
 market.
 
-So flash loans 
+So flash loans
