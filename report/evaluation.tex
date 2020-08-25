@@ -16,30 +16,29 @@ market.
 % - Gas prices
 \subsection{Minimum required future work}
 \noindent We also wanted to find out if it was possible to automate acting on
-arbitrage opportunities. While we firmly believe this is possible, it does take
-a great deal of effort to be able to do without some risk. Some of the things
-we would need to continue working on are:
+arbitrage opportunities. While we firmly believe this is possible, we not, so
+far, been able to create the system to do so. The following are some of the
+things we would need to continue working on: 
 
 \paragraph{How important is it to utilize an arbitrage opportunity in the next
 block?} When is the opportunity gone, and how many times will someone use it
-before you. If the opportunity changes so much between detecting it, and
+before you? If the opportunity changes so much between detecting it, and
 executing on it, that it is no longer profitable, we would still need to pay for
 the gas used. If this happens a lot, we might end up with an overall
-unprofitable system, even if some transactions makes money.
+unprofitable system, even if some transactions make money.
 \paragraph{Gas prices} How much does it cost to run the code for an arbitrage
 opportunity? Where is the cutoff, when it is no longer profitable due to the
 cost of gas?
 \paragraph{Fees incurred} Our theory assumes that there are no fees on the
-exchanges, which there is. We would therefore need to adjust our calculations,
+exchanges, which there are. We would therefore need to adjust our calculations,
 to take this into account. We do however believe, that this would be a
 relatively minor adjustment to make.
-\paragraph{Risk analysis} We would need to assess how much we can lose before it
-becomes unprofitable, and what the actual profit is. If we e.g. will earn little
-money, but risk to lose a lot, it would not be worth it in the end.\\\\
+\paragraph{Risk analysis} We would need to try to estimate the risk of a
+transaction not going through, and thereby losing money in the form of gas.\\\\
 % We would rather have focused
 % How it went
-We spent too much time on getting a broad knowledge. We could in hindsight
-have limited our scope without losing the ability to find arbitrage
-opportunities. The limited scope would be focused on understanding AMMs, and
-arbitrage, and not have included the rest of the attacks/exploits that we have
+During this project, we probably spent too much time getting broad knowledge. We
+could in hindsight have limited our scope without losing the ability to find
+arbitrage opportunities. The limited scope would be focused on understanding
+AMMs, and arbitrage, and not have included the rest of the attacks that we have
 discussed in this report.

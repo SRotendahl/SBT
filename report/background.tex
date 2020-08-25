@@ -7,11 +7,10 @@ let's explain. Usually, there is a risk in lending money, that is, the risk that
 the borrower will not pay it back, however, this can be guaranteed by the
 blockchain. When a transaction is being executed it can be rolled back if
 something invalidates the transaction. So if we say that not repaying the loan
-violates the contract, then the block will rollback to before the
-transaction.\\
+violates the contract, then the transaction will be rolled back.\\
 
 When taking a flash loan you borrow from a liquidity pool, and when borrowing
-from this pool you pay back a fee thereby incentivizing individuals and
+from this pool you pay back a fee, thereby incentivizing individuals and
 investors to deposit into the pool.
 
 \subsection{Decentralized exchange (DEX)}
@@ -26,7 +25,7 @@ exchange their assets in a decentralized fashion.
   \label{fig:LOB}
 \end{wrapfigure}
 A limit order book is a record of so-called \textit{limit orders}. A limit order
-is a trader requesting to buy an asset at up to a certain price or sell an
+is a trader requesting to buy an asset at up to a certain price, or sell an
 asset at a minimum specified price. So if we want to sell an asset, an example of
 a limit order could be that we want to sell asset X at 15\$ or higher, or if we
 were buying we would say that we want to buy asset X at 15\$ or below. A LOB is
@@ -38,16 +37,17 @@ We have specifically looked at Uniswap when understanding AMMs, so while this
 background will fit most AMMs, the math/implementation might differ slightly
 from AMM to AMM.
 
-AMM's works by exchanging assets between pools in a contract. For example, one
+AMMs works by exchanging assets between pools in a contract. For example, one
 contract could exchange DAI for BTC. This contract will contain a liquidity pool
 of DAI and a pool of BTC. This is how Uniswap version 2 works, with a contract
-for each exchange pair, ie. a many-to-many relation. Version 1 of Uniswap worked
-by having ETH as the to-between currency, meaning that for each asset (X) there
-was a contract, containing ETH and X. You could then exchange ETH to X and X to
-ETH, but if you wanted to swap Y for X you would need to swap Y for ETH, and ETH
-for X. This is not good since you trade twice, and incur the fees associated
-with that twice, as well as experiencing the \textit{slippage} in both trades,
-and this is one of the things that the second version of the Uniswap protocol fixes.
+for each exchange pair, ie. a many-to-many relation. Version 1 of Uniswap works
+by having ETH as the go-between currency, meaning that for each asset (X) there
+is a contract, containing ETH and X. You can then exchange ETH to X and X to
+ETH, but if you want to swap Y for X you will need to swap Y for ETH, and ETH
+for X. This is not good since you need to trade twice, and will incur the fees
+associated with that twice, as well as experiencing the \textit{slippage} in
+both trades. This are some the things that the second version of the Uniswap
+protocol fixes.
 
 \paragraph{Price calculation}
 Unlike LOBs, it is not immediately clear, what the price of exchanging will be.
@@ -66,16 +66,16 @@ reserve of $A$. Since the product of the 2 reserves must remain constant, the
 reserve of $B$ will decrease. This is our payout. We have:
 
 \begin{align*}
-  (r^A + x) \cdot (r^B - payout) & = r^A \cdot r^B \Leftrightarrow                 \\
+  (r^A + x) \cdot (r^B - payout) & = \overbrace{r^A \cdot r^B}^{c} \Leftrightarrow \\
   r^B - payout                   & = \frac{r^A \cdot r^B}{r^A + x} \Leftrightarrow \\
   payout                         & = r^B - \frac{r^A \cdot r^B}{r^A + x}
 \end{align*}
 
 \paragraph{Slippage}
-As we can see in the equation for payout above, the amount we're payed out does
+As we can see in the equation for payout above, the amount we receive does
 not double, if we double x. Said more generally, the more we try to exchange,
-the higher the price we will pay. The first part of what we buy (keep in mind
-that this is continuous, not discrete) is cheaper, than the last part we buy.
-This is known as slippage. Since this is dependent on the number of reserves in
-the contract, slippage will be high if the reserves are not that big, and lower
-if the reserves are great.
+the higher the average price of the asset will be. The first part of what we buy
+(keep in mind that this is continuous, not discrete) is cheaper, than the last
+part we buy. This is known as slippage. Since this is dependent on the amount of
+reserve in the contract, slippage will be high if the reserves are small, and
+lower if the reserves are large.
