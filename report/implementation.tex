@@ -108,9 +108,9 @@ contract Gordon is ICallee, DydxFlashloanBase, Ownable {
 \end{figure}
 
 \subsection{Opportunity detection}
-We have implemented a profit calculator in Python (\ref{}) which, given the reserves of
-two different exchanges, can calculate how much to borrow and the resulting
-profits. This is done with the formula for input, discussed in
+We have implemented a profit calculator in Python (\ref{code:pyProf}) which,
+given the reserves of two different exchanges, can calculate how much to borrow
+and the resulting profits. This is done with the formula for input, discussed in
 \autoref{maximizing}. This is of course not enough to detect opportunities, but
 would be central in such a system. We are currently not getting all of the
 information that would be required to use this (namely, all of the reserves for
