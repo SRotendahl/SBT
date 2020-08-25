@@ -1,10 +1,22 @@
 \subsection{Flash Loans}
-Flash loans are zero-risk loans which enables anyone to borrow large amounts of money, which they can do what they please with, as long as they pay the loan back within the same transaction. This will sound crazy to the uninitiated but lets explain. Usually there is a risk in lending money, that is the risk of the borrower not paying it back, however this can be gaurenteed by the blockchain. When a transaction is being computed it can be rolled back if something invalidates the transaction, so if we say that not repaying the loan is in violation of the contract, then the block will role back to before the transaction.
+Flash loans are loans with zero-risk to the liquitity provider\footnote{Ignoring
+smart contract bugs, and vulnerabilities}, which enables anyone to borrow large
+amounts of money, without any collateral, as long as they pay the loan
+back within the same transaction. This will sound crazy to the uninitiated but
+lets explain. Usually there is a risk in lending money, that is, the risk that
+the borrower will not pay it back, however this can be guaranteed by the
+blockchain. When a transaction is being executed it can be rolled back if
+something invalidates the transaction. So if we say that not repaying the loan
+is in violation of the contract, then the block will rollback to before the
+transaction.\\
 
-When taking a flash loan you borrow from a liquidity pool, and when borrowing from this pool you pay back a fee thereby incentivizing individuals and investors to deposit in the pool.
+When taking a flash loan you borrow from a liquidity pool, and when borrowing
+from this pool you pay back a fee thereby incentivizing individuals and
+investors to deposit into the pool.
 
 \subsection{Dencentralized exchange (DEX)}
-A dencentralized exchange is (like normal exchanges) a service where actors can exchange their assets in a dencentralized fashion.
+A dencentralized exchange is (like normal exchanges) a service where actors can
+exchange their assets in a decentralized fashion.
 
 \subsubsection{Limit order book (LOB)}
 \begin{wrapfigure}{r}{5.5cm}
@@ -13,7 +25,13 @@ A dencentralized exchange is (like normal exchanges) a service where actors can 
   \caption{A visual example of a limit order book.}
   \label{fig:LOB}
 \end{wrapfigure}
-A limit order book is a record of so called \textit{limit orders}. A limit order is a trader requesting to buy or sell up to a certian price, so if we want to sell an (or multiple) assets a limit order could be that we want to sell asset X at 15\$ or higher, or if we were buying we would say that we want to buy asset X at 15\$ or below. A LOB is simply a record of such limit orders. An example of this can be seen in figure
+A limit order book is a record of so called \textit{limit orders}. A limit order
+is a trader requesting to buy an asset at up to a certain price, or sell an
+asset at at least a certain price. So if we want to sell an asset, an example of
+a limit order could be that we want to sell asset X at 15\$ or higher, or if we
+were buying we would say that we want to buy asset X at 15\$ or below. A LOB is
+simply a record of such limit orders. An example of this can be seen in figure
+\ref{fig:LOB}
 
 \subsubsection{Automated market maker (AMM)}
 We have specifically looked at Uniswap when understanding AMMs, so while this
