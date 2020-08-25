@@ -1,21 +1,21 @@
 \subsection{Flash Loans}
-Flash loans are loans with zero-risk to the liquitity provider\footnote{Ignoring
+Flash loans are loans with zero-risk to the liquidity provider\footnote{Ignoring
 smart contract bugs, and vulnerabilities}, which enables anyone to borrow large
 amounts of money, without any collateral, as long as they pay the loan
 back within the same transaction. This will sound crazy to the uninitiated but
-lets explain. Usually there is a risk in lending money, that is, the risk that
-the borrower will not pay it back, however this can be guaranteed by the
+let's explain. Usually, there is a risk in lending money, that is, the risk that
+the borrower will not pay it back, however, this can be guaranteed by the
 blockchain. When a transaction is being executed it can be rolled back if
 something invalidates the transaction. So if we say that not repaying the loan
-is in violation of the contract, then the block will rollback to before the
+violates the contract, then the block will rollback to before the
 transaction.\\
 
 When taking a flash loan you borrow from a liquidity pool, and when borrowing
 from this pool you pay back a fee thereby incentivizing individuals and
 investors to deposit into the pool.
 
-\subsection{Dencentralized exchange (DEX)}
-A dencentralized exchange is (like normal exchanges) a service where actors can
+\subsection{Decentralized exchange (DEX)}
+A decentralized exchange is (like normal exchanges) a service where actors can
 exchange their assets in a decentralized fashion.
 
 \subsubsection{Limit order book (LOB)}
@@ -25,9 +25,9 @@ exchange their assets in a decentralized fashion.
   \caption{A visual example of a limit order book.}
   \label{fig:LOB}
 \end{wrapfigure}
-A limit order book is a record of so called \textit{limit orders}. A limit order
-is a trader requesting to buy an asset at up to a certain price, or sell an
-asset at at least a certain price. So if we want to sell an asset, an example of
+A limit order book is a record of so-called \textit{limit orders}. A limit order
+is a trader requesting to buy an asset at up to a certain price or sell an
+asset at a minimum specified price. So if we want to sell an asset, an example of
 a limit order could be that we want to sell asset X at 15\$ or higher, or if we
 were buying we would say that we want to buy asset X at 15\$ or below. A LOB is
 simply a record of such limit orders. An example of this can be seen in figure
@@ -39,13 +39,13 @@ background will fit most AMMs, the math/implementation might differ slightly
 from AMM to AMM.
 
 AMM's works by exchanging assets between pools in a contract. For example, one
-contract could exchange DAI for BTC. This contract will contain a liquitity pool
+contract could exchange DAI for BTC. This contract will contain a liquidity pool
 of DAI and a pool of BTC. This is how Uniswap version 2 works, with a contract
-for each exchange pair, ie. a many to many relation. Version 1 of Uniswap worked
+for each exchange pair, ie. a many-to-many relation. Version 1 of Uniswap worked
 by having ETH as the to-between currency, meaning that for each asset (X) there
 was a contract, containing ETH and X. You could then exchange ETH to X and X to
 ETH, but if you wanted to swap Y for X you would need to swap Y for ETH, and ETH
-for X. This is not good since you trade twice, and encur the fees associated
+for X. This is not good since you trade twice, and incur the fees associated
 with that twice, as well as experiencing the \textit{slippage} in both trades,
 and this is one of the things that the second version of the Uniswap protocol fixes.
 
@@ -60,7 +60,7 @@ infinitesimal amount of the asset. In reality, the amount of $B$ you will receiv
 for exchanging an amount of $A$, is determined by the product of the 2 reserves,
 before and after the exchange. Before the exchange takes place, the product of
 the 2 reserves (time omitted), will form a constant: $r^A \cdot r^B = c$. After
-the exchange has taken place, this constant must be the same. So lets say that
+the exchange has taken place, this constant must be the same. So let's say that
 we want to exchange an amount of $A$, named $x$, thereby adding $x$ to the
 reserve of $A$. Since the product of the 2 reserves must remain constant, the
 reserve of $B$ will decrease. This is our payout. We have:
@@ -72,10 +72,10 @@ reserve of $B$ will decrease. This is our payout. We have:
 \end{align*}
 
 \paragraph{Slippage}
-As we can see in equation for payout above, the amount we're payed out does not
-double, if we double x. Said more generally, the more we try to exchange, the
-higher the price we will pay. The first part of what we buy (keep in mind that
-this is continuous, not discrete) is cheaper, than the last part we buy. This is
-known as slippage. Since this is dependent on the amount of reserves in the
-contract, slippage will be high if the reserves are not that big, and lower if
-the reserves are great.
+As we can see in the equation for payout above, the amount we're payed out does
+not double, if we double x. Said more generally, the more we try to exchange,
+the higher the price we will pay. The first part of what we buy (keep in mind
+that this is continuous, not discrete) is cheaper, than the last part we buy.
+This is known as slippage. Since this is dependent on the number of reserves in
+the contract, slippage will be high if the reserves are not that big, and lower
+if the reserves are great.
