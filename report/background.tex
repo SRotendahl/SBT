@@ -8,7 +8,13 @@ the borrower will not pay it back, however, this can be guaranteed by the
 blockchain. When a transaction is being executed it can be rolled back if
 something invalidates the transaction. So if we say that not repaying the loan
 violates the contract, then the transaction will be rolled back.\\
-
+\subsubsection{Limit order book (LOB)}
+\begin{wrapfigure}[12]{r}{5.5cm}
+  \centering
+  \includegraphics[width=0.3\textwidth]{assests/Flash-loans-LOB}
+  \caption{A visual example of a limit order book.}
+  \label{fig:LOB}
+\end{wrapfigure}
 When taking a flash loan you borrow from a liquidity pool, and when borrowing
 from this pool you pay back a fee, thereby incentivizing individuals and
 investors to deposit into the pool.
@@ -17,13 +23,6 @@ investors to deposit into the pool.
 A decentralized exchange is (like normal exchanges) a service where actors can
 exchange their assets in a decentralized fashion.
 
-\subsubsection{Limit order book (LOB)}
-\begin{wrapfigure}{r}{5.5cm}
-  \centering
-  \includegraphics[width=0.3\textwidth]{assests/Flash-loans-LOB}
-  \caption{A visual example of a limit order book.}
-  \label{fig:LOB}
-\end{wrapfigure}
 A limit order book is a record of so-called \textit{limit orders}. A limit order
 is a trader requesting to buy an asset at up to a certain price, or sell an
 asset at a minimum specified price. So if we want to sell an asset, an example of
@@ -71,6 +70,12 @@ reserve of $B$ will decrease. This is our payout. We have:
   payout                         & = r^B - \frac{r^A \cdot r^B}{r^A + x}
 \end{align*}
 
+\begin{wrapfigure}[14]{r}{5.5cm}
+  \centering
+  \includegraphics[width=.2\textwidth]{assests/Flash-loans-18-jan}
+  \caption{A simplified figure showing the first arbitrage using flash loans.}
+  \label{fig:firstArb}
+\end{wrapfigure}
 \paragraph{Slippage}
 As we can see in the equation for payout above, the amount we receive does
 not double, if we double x. Said more generally, the more we try to exchange,
