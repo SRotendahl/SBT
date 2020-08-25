@@ -106,3 +106,19 @@ contract Gordon is ICallee, DydxFlashloanBase, Ownable {
     \caption{The contract definition and the key methods' signatures}
     \label{signature}
 \end{figure}
+
+\subsection{Opportunity detection}
+We have implemented a profit calculator in python which, given the reserves of 2
+different exchanges, can calculate how much to borrow and the resulting profits.
+This is done with the formula for input, discussed in the arbitrage section.
+This is of course not enough to detect opportunities, but would be central in
+such a system. We're currently not getting all of the information that would be
+required to use this (namely, all of the reserves for all of the exchanges). If
+we had this information, it would however be quite simple to detect
+opportunities. We would identify all of the duplicate pairs, and run then
+through this calculator, and then check if the profits exceed the price of the
+loan + the price of the gas used. In terms of complexity, this is a relatively
+simple problem, proportional to the number of duplicate pairs (When considering
+traditional arbitrage, triangular arbitrage is significantly more complex). This
+system would run continuously, and whenever an sufficiently big opportunity
+would appear, the contract would be executed.
