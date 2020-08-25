@@ -1,12 +1,12 @@
-Flash loans does not enable anything new, it simply allows everyone to be able
+Flash loans do not enable anything new, it simply allows everyone to be able
 to trade with large amounts of capital (for a single transaction). If you did
 indeed possess a vast amount of wealth (if you are a whale) then flash loans are
 not really of interest to you, you can already do the things it allows. With
-that in mind however, lets look at use cases for flash loans where most of them
+that in mind, however, let's look at use cases for flash loans where most of them
 are interesting because everyone can now do them, not just a select few with a
 lot of capital. The following here is use-cases in which we can see the average
-trader participating in due to the possiblity presented by flash
-loans \cite{attack}.
+trader participating in due to the possibility presented by flash
+loans\cite{attack}.
 
 \begin{wrapfigure}{r}{5.5cm}
   \centering
@@ -23,10 +23,10 @@ if one DEX trades an asset for a lower price than another, then there is
 an \textit{arbitrage} opportunity. Arbitrage is the process of making profit off
 of these prices difference. The way this is done, is by buying the asset at the
 cheaper exchange, and then selling it again at the more expensive exchange. The
-prices differences will usually be small, so in order to make a significant
+price differences will usually be small, so in order to make a significant
 amount of money, you will need a great deal of capital. This is where flash
-loans comes in. Flash loans guarentees that the loans is paid back at the end of
-the transaction, and arbitrage guarentees profit (if the trades back and forth
+loans come in. Flash loans guarantees that the loans are paid back at the end of
+the transaction, and arbitrage guarantees profit (if the trades back and forth
 in the exchanges is instantaneous) therefore you could consider arbitrage
 through flash loans risk-free, with the caveats that you do not count the
 vulnerabilities of smart contracts and you do not consider gas-fees a risk.\\
@@ -46,15 +46,15 @@ trend by buying and selling an asset thereby increasing the volume at
 which the asset is traded which will attract investors. This practice
 has been banned (in the USA) on the centralized markets since
 1936. While we do not condone this practice it is undeniable a
-use-case for flash loans, since you can with no significant captial greatly
+use-case for flash loans, since you can with no significant capital greatly
 increase the trade volume of an asset, and thereby manipulate the
 market.
 
 \paragraph{Collateral Swapping} Lots of DeFi protocols allows you to
-put up collateral for loans, however there could be reasons for you
+put up collateral for loans, however, there could be reasons for you
 wanting to change that collateral for example if your collateral is in
 ETH and the value of ETH declines, then you might want to swap it for
-DAI but you might have taken out loans aganist this collateral, so you
+DAI but you might have taken out loans against this collateral, so you
 do not have the capital to pay out your collateralized position and
 take out a new one in a different asset. With flash loans this becomes
 easy, you would loan the amount you need to pay out your position, swap
@@ -65,23 +65,23 @@ new collateralized position, and finally pay back the loan.
 opened at e.g. Maker, they require you to put up ETH as collateral for the loan
 you take in DAI. If ETH falls in value enough, you will end up below a certain
 threshold (150\%). If this occurs, your collateral will be auctioned off, to
-cover your debt with an added penalty fee. In order to earn money from this
+cover your debt with an added penalty fee. To earn money from this
 using flash loans, one can take a flash loan and buy collateral at an auction.
 Because the collateral should still be worth more than 100\% of the debt, you
-should end up with a profit, that then can be used to pay back the flash loan.
+should end up with a profit, that can then be used to pay back the flash loan.
 There is relatively little risk, as you at most end up losing the gas fees.
 
 \subsection{Discussion}
 As we can see in these few use cases it can be hard to say if flash
-loans are malicious, as mentioned flash loans does not enable new
+loans are malicious, as mentioned flash loans do not enable new
 things, it simply allows everyone to trade with large amounts of
 capital (within a single transaction). We would consider a use case
 like arbitrage as benign, while you make money on market instabilities
-you stabilize the market by doing so for example Uniswap version 2
+you stabilize the market by doing so, for example, Uniswap version 2
 depends on arbitrage to maintain a correct exchange rate, so here
 flash loans just enables everyone to join in. Where use cases such as
 wash trading (and oracle manipulation as we will see in section
-\ref{ex}) are clearly malicious since these practices distorts the
+\ref{ex}) are clearly malicious since these practices distort the
 market to gain a profitable opportunity without adding anything to the
 market.
 

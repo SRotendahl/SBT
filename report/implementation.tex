@@ -2,10 +2,10 @@
 \subsection{Libraries}
 \subsubsection{\code{money-legos}}
 We chose to utilize the \code{money-legos} library. The advantage of using a
-third party library is, that we have access to helper methods for many of the
+third-party library is, that we have access to helper methods for many of the
 different protocols. This made it easy to swap between doing flash loans at
 different providers, and we were easily able to swap on different exchanges.
-Furthermore the people behind \code{money-legos} have made some great
+Furthermore, the people behind \code{money-legos} have made some great
 documentation for many of the protocols.
 
 The \code{money-legos} library works by having a few helper methods, but mostly
@@ -22,11 +22,11 @@ people to be able to use our contract.
 
 \subsection{Flash loans on $\delta y/\delta x$ in practice}
 In practice flash loans are implemented by chaining three method calls on the
-$\delta y/\delta x$ protocol, where in other protocols flash loans are built
+$\delta y/\delta x$ protocol, where other protocols have flash loans built
 into the protocol.
 \begin{enumerate}
     \item Borrow
-    \item Call (execute money making logic)
+    \item Call (execute money-making logic)
     \item Deposit
 \end{enumerate}
 A small fee is paid at the deposit step (+2 wei of the borrowed asset).
@@ -35,12 +35,12 @@ A small fee is paid at the deposit step (+2 wei of the borrowed asset).
 Our contract named ``Gordon'' uses the $\delta y/\delta x$ protocol to take a
 flash loan, and then based on the user input, execute arbitrage on different
 DEXes. We chose to make our contract, so that you deploy it once, and based on
-user input, when a flash loan is initiated it will chose to exchange on different
-markets and different assets. This means that the contract can be reused and
-does not need to be redeployed, for each arbitrage opportunity. This design
-decision is critical due to two main reasons.
+user input, when a flash loan is initiated it will choose to exchange on
+different markets and different assets. This means that the contract can be
+reused and does not need to be redeployed, for each arbitrage opportunity. This
+design decision is critical due to two main reasons.
 \begin{itemize}
-    \item It is expensive to deploy a smart contract. Using the built in gas
+    \item It is expensive to deploy a smart contract. Using the built-in gas
         estimator in Remix IDE we estimated, that deploying the contract uses
         about 936,800 gas, which at low price of 77 Gwei equals around
         \$28 at the time of writing. We can choose this low price, as our
@@ -57,7 +57,7 @@ decision is critical due to two main reasons.
 is passed to the method is passed in the data variable. This block of data is
 used to control what the loan is used for. By creating a simple byte code
 interpreter, we can control what steps to take. We have created a simple
-instruction set with the definition show here, where \code{<data>} is the final
+instruction set with the definition shown here, where \code{<data>} is the final
 argument to the method\footnote{See figure \ref{signature} for a signature of
 the method} \code{initiateFlashLoan}:
 
@@ -120,6 +120,6 @@ and run them through this calculator, and then check if the profits exceed the
 price of the loan and the price of the gas used. In terms of complexity, this is
 a relatively simple problem, proportional to the number of duplicate pairs (When
 considering traditional arbitrage, triangular arbitrage is significantly more
-complex). This system would run continuously, and whenever an sufficiently big
-opportunity would appear, the contract would be executed with the maximised
+complex). This system would run continuously, and whenever a sufficiently big
+opportunity would appear, the contract would be executed with the maximized
 inputs.
