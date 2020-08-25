@@ -10,7 +10,7 @@ documentation for many of the protocols.
 
 The \code{money-legos} library works by having a few helper methods, but mostly
 by providing abstract\footnote{Pre Solidity 0.6.0 an abstract contract was
-simply a contract without an implementation, but we chose to port it to solidity
+simply a contract without an implementation, but we chose to port it to Solidity
 0.6.0 to be able to use some new features} contracts that can then be
 instantiated with the address of the deployed contract.
 
@@ -44,8 +44,8 @@ design decision is critical due to two main reasons.
         estimator in Remix IDE we estimated, that deploying the contract uses
         about 936,800 gas, which at low price of 77 Gwei equals around
         \$28 at the time of writing. We can choose this low price, as our
-        contract is deploy once, whereas otherwise, we would need to pay more
-        per gas in order to reliably get our contract deployed quickly.
+        contract is deployed once, whereas otherwise, we would need to pay more
+        per gas to reliably get our contract deployed quickly.
     \item If we have to wait for the contract to be deployed we might miss the
         arbitrage opportunity. This is because it would require us to wait for
         at least one block, for the contract to be deployed, and then only
